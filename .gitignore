@@ -1,0 +1,31 @@
+# EIDARA — .gitignore
+
+# ─── Auto-managed by compiler (too noisy for git) ───────────────
+VAULT/BACKUP/                      # BRAIN.md snapshots + SYSTEM/ backups (rotated by compile.py)
+SYSTEM/health.json                 # Compile metrics (changes every compile)
+SYSTEM/.prev_source_sizes.json     # Delta tracking cache
+SYSTEM/.protected_checksums.json   # Local W3(b) checksum baseline (per-install)
+
+# ─── Compile lifecycle (transient) ─────────────────────────────
+SYSTEM/.compile.lock               # Concurrent-compile guard (auto-cleaned)
+SYSTEM/.compile-error              # Halt marker after 3 watcher failures
+VAULT/.librarian-last-run          # Local Librarian timestamp
+
+# ─── Credentials — NEVER commit ────────────────────────────────
+VAULT/ENABLERS/credentials.md
+SYSTEM/credentials.md
+
+# ─── Python cache ──────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+pytest-cache-files-*/
+
+# ─── OS / editor noise ─────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~

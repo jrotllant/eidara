@@ -1,0 +1,8 @@
+{
+  "maxBackups": 60,
+  "maxBackupAgeDays": 180,
+  "stalenessDays": 180,
+  "archivePurgeDays": 60,
+  "brainThreshold": 1500,
+  "version": "3.1"
+}
