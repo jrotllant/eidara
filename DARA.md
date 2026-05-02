@@ -130,7 +130,7 @@ Where: `AI Model (Platform)` identifies who wrote (e.g., `Claude Opus (Cowork)`,
 `- Claude Opus (Cowork) | project-alpha.md | UPDATED — added quick hits | ops:4 | retry:N | ~16Kt`
 
 **W8 — File naming:** kebab-case.
-- NEURONS: `[business]-[topic].md` → `tffc-extras-ps26.md`
+- NEURONS: `[domain]-[topic].md` → `acme-website-launch.md`
 - ENABLERS: `agent-[name].md`, `credentials.md`, `tools-[platform].md`
 
 **W9 — Session closing trigger.** Before ending a conversation where significant work was done on a project, check: "Is there anything from this session that DARA should remember?" If yes, create or update the relevant neuron in VAULT, compile, and log. This applies to ALL AI sessions, not just memory-focused ones. A 4-hour coding session is just as worthy of a VAULT update as a memory review session.

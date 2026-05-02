@@ -1,5 +1,5 @@
 {
-  "lastCompile": "2026-05-03T00:20:33",
+  "lastCompile": "2026-05-03T00:21:52",
   "activeNeurons": 2,
   "activeEnablers": 4,
   "archived": 0,
@@ -7,7 +7,7 @@
   "brainTokens": 901,
   "warnings": 0,
   "inboxPending": 0,
-  "backupCount": 0,
+  "backupCount": 1,
   "missingBrainSummaries": 0,
   "lastLibrarianDays": -1,
   "alerts": []
