@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EIDARA — Open-Source AI Memory System</title>
+  <meta name="description" content="Your AI remembers everything between conversations. Persistent compiled memory for Claude, GPT, DeepSeek. Tested across 4 models. Average score: 92.6%.">
+  <meta name="keywords" content="AI memory, persistent context, Claude, GPT, DeepSeek, open source, local, markdown">
+  <link rel="canonical" href="https://eidara.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="EIDARA — Your AI Remembers Everything Between Conversations">
+  <meta property="og:description" content="Your AI remembers everything between conversations. Tested across 4 models. Average score: 92%.">
+  <meta property="og:url" content="https://eidara.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://eidara.dev/og-image.png">
+  <meta property="og:site_name" content="EIDARA">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EIDARA — Your AI Remembers Everything Between Conversations">
+  <meta name="twitter:description" content="Persistent compiled memory for any AI. Open source. Local. No cloud required.">
+  <meta name="twitter:image" content="https://eidara.dev/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "EIDARA",
+    "description": "Persistent compiled memory system for AI. Any AI writes structured markdown files. A compiler produces a single optimized file that any AI reads cold.",
+    "url": "https://eidara.dev",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Cross-platform",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Javier Rotllant Miras",
+      "url": "https://github.com/jrotllant"
+    },
+    "license": "https://opensource.org/licenses/MIT",
+    "codeRepository": "https://github.com/jrotllant/eidara"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/assets/eidara-lockup-dark.svg" alt="EIDARA" height="32">
+      </a>
+      <ul class="nav-links">
+        <li><a href="/story/" >Story</a></li>
+        <li><a href="/how-it-works/">How it works</a></li>
+        <li><a href="/results/">Results</a></li>
+        <li><a href="/download/">Download</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/story/" onclick="toggleMenu()">Story</a>
+    <a href="/how-it-works/" onclick="toggleMenu()">How it works</a>
+    <a href="/results/" onclick="toggleMenu()">Results</a>
+    <a href="/download/" onclick="toggleMenu()">Download</a>
+    <a href="#footer" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content container">
+      <svg class="hero-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+        <defs>
+          <radialGradient id="halo-h1" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#D4A855" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#D4A855" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="halo-h2" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#D4A855" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#D4A855" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path d="M 32 8 C 22 8, 14 13, 12 22 C 9 22, 6 25, 6 30 C 6 35, 9 38, 12 38 C 12 44, 16 49, 22 51 L 22 56 L 28 56 L 28 51 C 30 51, 32 50, 32 50 C 32 50, 34 51, 36 51 L 36 56 L 42 56 L 42 51 C 48 49, 52 44, 52 38 C 55 38, 58 35, 58 30 C 58 25, 55 22, 52 22 C 50 13, 42 8, 32 8 Z" fill="#A78BFA"/>
+        <path d="M 32 12 L 32 50" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M 14 24 Q 20 22, 26 26" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+        <path d="M 14 32 Q 20 30, 26 34" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+        <path d="M 14 40 Q 20 38, 24 42" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+        <path d="M 38 26 Q 44 22, 50 24" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+        <path d="M 38 34 Q 44 30, 50 32" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+        <path d="M 40 42 Q 44 38, 50 40" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+        <circle cx="18" cy="22" r="6.16" fill="url(#halo-h1)"/>
+        <circle cx="18" cy="22" r="2.2" fill="#D4A855" class="node-gold"/>
+        <circle cx="26" cy="28" r="1.4" fill="rgba(255,255,255,0.85)"/>
+        <circle cx="22" cy="38" r="1.6" fill="rgba(255,255,255,0.85)"/>
+        <circle cx="38" cy="18" r="1.4" fill="rgba(255,255,255,0.85)"/>
+        <circle cx="46" cy="26" r="6.16" fill="url(#halo-h2)"/>
+        <circle cx="46" cy="26" r="2.2" fill="#D4A855" class="node-gold"/>
+        <circle cx="42" cy="38" r="1.6" fill="rgba(255,255,255,0.85)"/>
+        <circle cx="32" cy="44" r="1.6" fill="rgba(255,255,255,0.85)"/>
+      </svg>
+      <h1>Your AI remembers everything<br>between conversations.</h1>
+      <p class="hero-sub">
+        You use Claude, GPT, and DeepSeek. Every session starts from zero.<br>
+        <strong>DARA is a file they all share</strong> — write once, read everywhere.<br>
+        Open source. Local. No cloud required.
+      </p>
+      <div class="btn-group">
+        <a href="/download/" class="btn btn-primary">Download DARA &rarr;</a>
+        <a href="#how-it-works" class="btn btn-secondary">See how it works &darr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN -->
+  <section class="section-dark">
+    <div class="container reveal">
+      <div class="pain-text">
+        <p>You open a new chat with Claude. You paste your project context.<br>
+        You switch to GPT. You paste it again. DeepSeek? Paste.</p>
+        <p style="margin-top:1.5rem;">Week two: you have 4 versions of the same file and you're not sure which is current.</p>
+        <p style="margin-top:1.5rem;">Your AIs are brilliant. But <em>every conversation is a first date.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IS THIS FOR -->
+  <section class="section-subtle">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2>Who is this for</h2>
+      </div>
+      <ul class="checklist" style="max-width:580px; margin:0 auto;">
+        <li>You use more than one AI platform (Claude, GPT, DeepSeek...)</li>
+        <li>You're tired of pasting context manually every session</li>
+        <li>You manage multiple projects and your AIs should know them all</li>
+        <li>You care about privacy (no cloud, no telemetry)</li>
+        <li>You can run a Python script (or know someone who can)</li>
+      </ul>
+      <p style="text-align:center; margin-top:2rem; color:var(--gold); font-weight:500;">If you checked 2 or more, EIDARA will save you time starting today.</p>
+    </div>
+  </section>
+
+  <!-- THREE WRONG ANSWERS -->
+  <section class="section-dark">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2>Three wrong answers</h2>
+        <p>EIDARA didn't start as EIDARA. It started as three wrong answers.</p>
+      </div>
+      <div class="cards-grid" style="max-width:900px; margin:0 auto;">
+        <div class="card">
+          <div class="card-icon">v1</div>
+          <h3>Task experts</h3>
+          <p>A mail agent doesn't understand your business. A domain expert does.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">v2</div>
+          <h3>Role permissions</h3>
+          <p>Only authorized AIs can write. But any AI might have the right info.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">v3</div>
+          <h3>Hierarchies</h3>
+          <p>Everyone organizes AI memory for humans who browse folders. But humans never open the folder.</p>
+        </div>
+      </div>
+      <div class="quote" style="max-width:700px; margin:2.5rem auto 0;">
+        <p>"If the human never opens the folder, who are you organizing for?"</p>
+        <cite>That changed everything.</cite>
+      </div>
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="/story/" class="btn btn-secondary">Read the full story &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-subtle" id="how-it-works">
+    <div class="container reveal">
+      <div class="section-header">
+        <span class="section-tag">Architecture</span>
+        <h2>How it works</h2>
+      </div>
+      <div class="flow">
+        <div class="flow-box">
+          <h4>WRITE</h4>
+          <span class="mono">VAULT/</span>
+          <p>Any AI writes.<br>Any platform.<br>Follow the rules.</p>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box">
+          <h4>COMPILE</h4>
+          <span class="mono">compile.py</span>
+          <p>10-step pipeline.<br>Validates. Dedupes.<br>Auto-fixes. Locks.</p>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box">
+          <h4>READ</h4>
+          <span class="mono">BRAIN.md</span>
+          <p>Any AI reads.<br>One file. Current.<br>SHA256 verified.</p>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:2rem; color:var(--gold); font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:600;">Write anywhere. Compile once. Read everywhere.</p>
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="/how-it-works/" class="btn btn-secondary">See full architecture &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO ACTIONS -->
+  <section class="section-dark">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2>Two actions. That's it.</h2>
+      </div>
+      <div class="two-col" style="max-width:850px; margin:0 auto;">
+        <div class="code-block">
+          <code><span class="keyword">&rarr; Consult DARA</span><br><br><span class="comment">Open any AI with file access and say:</span><br><span class="string">"Check DARA for full context on project X."</span><br><br>Seconds later, the AI has full context.</code>
+        </div>
+        <div class="code-block">
+          <code><span class="keyword">&rarr; Write to DARA</span><br><br><span class="comment">When something new happens, say:</span><br><span class="string">"Update your context in DARA."</span><br><br>The AI writes it, the watcher compiles it.<br>Next session, it's there.</code>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:2rem; color:var(--text-muted); font-size:1.05rem;">You never touch files, folders, or terminals.</p>
+    </div>
+  </section>
+
+  <!-- THE PROOF -->
+  <section class="section-subtle">
+    <div class="container reveal">
+      <div class="section-header">
+        <span class="section-tag">Proof</span>
+        <h2>The proof</h2>
+        <p>4 different AI models each ran 52 autonomous tests independently. No human intervention. No cherry-picked results.</p>
+      </div>
+      <div class="stats-box">
+        <div class="stats-number">92.6%</div>
+        <div class="stats-label">Average score across 4 models</div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value">670/700</div>
+            <div class="stat-desc">Best: Opus 4.6 (95.7%)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">0</div>
+            <div class="stat-desc">System failures</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">0</div>
+            <div class="stat-desc">Data corruption</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">103</div>
+            <div class="stat-desc">Unit tests (100% pass)</div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:2rem; color:var(--text-muted);">No other memory system publishes cross-model test results.<br>We do because it has to work with <em>your</em> AI — not just ours.</p>
+      <div style="text-align:center; margin-top:1.5rem;">
+        <a href="/results/" class="btn btn-secondary">See full results &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT MAKES IT DIFFERENT -->
+  <section class="section-dark">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2>What makes it different</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">&para;</div>
+          <h3>It has a constitution</h3>
+          <p>DARA.md — 15 writing rules. The first file any AI reads. No training needed. The rules ARE the onboarding.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&crarr;</div>
+          <h3>It compiles</h3>
+          <p>A 10-step pipeline: validates, deduplicates, auto-fixes, compresses, checksums. Nobody else compiles their memory.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&equiv;</div>
+          <h3>Rules control, not roles</h3>
+          <p>Claude, GPT, DeepSeek, n8n — anyone writes if they follow the protocol. The constitution is the access control.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&oplus;</div>
+          <h3>It self-heals</h3>
+          <p>Errors are expected. The next AI that spots one fixes it. Consensus flags protect against unilateral changes.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&empty;</div>
+          <h3>Zero infrastructure</h3>
+          <p>Markdown + Python stdlib. No database. No Docker. No API. Runs anywhere Python 3.10+ exists.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARE A NEURON -->
+  <section class="section-subtle">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2>Share a neuron with your team</h2>
+      </div>
+      <div class="two-col" style="max-width:850px; margin:0 auto; align-items:center;">
+        <div>
+          <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8;">
+            Drop a <code>.md</code> file in Drive. Your colleague opens it with Claude, GPT, or DeepSeek. No install needed. It's just text — every AI understands it.
+          </p>
+          <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8; margin-top:1.2rem;">
+            Agents work the same way. <code>agent-librarian.md</code> contains the full librarian protocol. Any AI that reads it becomes the librarian. The intelligence is in the file, not in who runs it.
+          </p>
+        </div>
+        <div class="code-block">
+          <code><span class="comment"># agent-librarian.md</span><br><span class="keyword">summary:</span> <span class="string">Vault maintenance agent</span><br><br><span class="comment">## Protocol</span><br>1. Scan INBOX for pending items<br>2. Route each to correct neuron<br>3. Flag ambiguous entries<br>4. Log actions in changelog</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GET STARTED -->
+  <section class="section-dark">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2>Get started</h2>
+      </div>
+      <div class="code-block" style="max-width:600px; margin:0 auto;">
+        <code><span class="comment">$</span> <span class="keyword">git clone</span> <span class="string">https://github.com/jrotllant/eidara.git</span><br><span class="comment">$</span> <span class="keyword">cd</span> eidara<br><span class="comment">$</span> <span class="keyword">python</span> compile.py</code>
+      </div>
+      <p style="text-align:center; margin-top:1.5rem; color:var(--text-muted); max-width:550px; margin-left:auto; margin-right:auto;">
+        Or give the INSTALL file to any AI. It will guide you through 11 steps — including personalization, git setup, and watcher configuration.
+      </p>
+      <div class="btn-group" style="margin-top:2rem;">
+        <a href="https://github.com/jrotllant/eidara" class="btn btn-primary" target="_blank" rel="noopener">Download from GitHub &rarr;</a>
+        <a href="/download/#newsletter" class="btn btn-secondary">Join the newsletter &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILT IN THE OPEN -->
+  <section class="section-subtle">
+    <div class="container reveal" style="text-align:center; max-width:650px; margin:0 auto;">
+      <h2>Built in the open</h2>
+      <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8; margin-top:1.2rem;">
+        EIDARA is free. MIT licensed. No telemetry. No cloud. Your knowledge stays on your machine.
+      </p>
+      <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8; margin-top:1.2rem;">
+        Built by Javier Rotllant — pragmatic founder, Bain background, not an engineer. Someone with a problem and the stubbornness to solve it properly.
+      </p>
+      <div style="margin-top:2rem;">
+        <a href="https://github.com/jrotllant/eidara" class="btn btn-primary" target="_blank" rel="noopener">Star on GitHub &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT (commented, ready for GitHub Sponsors) -->
+  <!-- SUPPORT: uncomment when GitHub Sponsors is live
+  <section id="support">
+    <div class="container" style="text-align:center;">
+      <h2>Support EIDARA</h2>
+      <p style="color:var(--text-muted);">Free forever. If it saves you time, consider sponsoring.</p>
+      <a href="https://github.com/sponsors/jrotllant" class="btn btn-secondary">Sponsor &rarr;</a>
+    </div>
+  </section>
+  -->
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 Javier Rotllant Miras. MIT License.</span>
+      <div class="footer-links">
+        <a href="mailto:javier@eidara.dev">javier@eidara.dev</a>
+        <a href="https://github.com/jrotllant/eidara" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/jrotllant/eidara/issues" target="_blank" rel="noopener">Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.querySelector('.hamburger').classList.toggle('open');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // FAQ accordion (for download page, but harmless here)
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        q.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+
+  <!-- Cloudflare Web Analytics -->
+  <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN"}'></script> -->
+</body>
+</html>

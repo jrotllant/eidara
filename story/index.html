@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Story — EIDARA | Open-Source AI Memory System</title>
+  <meta name="description" content="How EIDARA was born: three wrong answers, a Bain consultant's question, and a radical decision to design AI memory for AI — not humans.">
+  <link rel="canonical" href="https://eidara.dev/story/">
+  <meta property="og:title" content="The Story — EIDARA">
+  <meta property="og:description" content="Three wrong answers and the question that changed everything.">
+  <meta property="og:url" content="https://eidara.dev/story/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://eidara.dev/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><img src="/assets/eidara-lockup-dark.svg" alt="EIDARA" height="32"></a>
+      <ul class="nav-links">
+        <li><a href="/story/" class="active">Story</a></li>
+        <li><a href="/how-it-works/">How it works</a></li>
+        <li><a href="/results/">Results</a></li>
+        <li><a href="/download/">Download</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/story/" onclick="toggleMenu()">Story</a>
+    <a href="/how-it-works/" onclick="toggleMenu()">How it works</a>
+    <a href="/results/" onclick="toggleMenu()">Results</a>
+    <a href="/download/" onclick="toggleMenu()">Download</a>
+    <a href="#footer" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag">Origin</span>
+      <h1>The story</h1>
+      <p>How a Bain consultant's question broke every assumption about AI memory.</p>
+    </div>
+  </section>
+
+  <!-- KARPATHY HOOK -->
+  <section class="section-dark">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>The reference — Karpathy got it almost right</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        Andrej Karpathy — former AI director at Tesla, OpenAI co-founder — published a paper on "LLM Wikis": markdown files that AI agents maintain as persistent memory.
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        The core idea is solid. But Karpathy, like everyone else, made one mistake.
+      </p>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section class="section-subtle">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>The problem</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        Javier Rotllant manages multiple businesses — food &amp; beverage, hospitality, technology consulting — with 25 markdown context files he uploads manually to every AI conversation.
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        Every new chat starts from zero. It's like having a brilliant employee with amnesia. The question: how do you give AIs persistent memory without heavy infrastructure, without vendor lock-in?
+      </p>
+    </div>
+  </section>
+
+  <!-- KARPATHY'S MISTAKE -->
+  <section class="section-dark">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>Karpathy's mistake (and everyone else's)</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        Karpathy, Tiago Forte (PARA), and the entire Obsidian community all make the same mistake: they design AI memory for human navigation.
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        EIDARA was born when Javier questioned that fundamental premise.
+      </p>
+    </div>
+  </section>
+
+  <!-- TIMELINE: 3 ITERATIONS -->
+  <section class="section-subtle">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>Three iterations</h2>
+      <div class="timeline" style="margin-top:2.5rem;">
+        <div class="timeline-item">
+          <h3>v1 — The org chart trap</h3>
+          <p style="margin-bottom:1rem;">First attempt: 6 specialized agents (mail agent, news agent, task agent) + a Librarian + a CEO supervisor. Javier killed it immediately.</p>
+          <p>His argument from Bain &amp; Company: "A mail agent reading TFFC emails doesn't understand TFFC. A TFFC expert reading their own emails does. Don't organize by task. Organize by knowledge."</p>
+          <div class="quote" style="margin-top:1.2rem;">
+            <p>Task experts are useless. Domain experts are everything.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3>v2 — The roles trap</h3>
+          <p style="margin-bottom:1rem;">Second attempt: domain agents with write permissions. Only the TFFC agent writes TFFC memories. Clean, secure, organized. Javier killed it again.</p>
+          <p>"Having dedicated writer agents limits me. I want EVERYONE to write — any Cowork session, any Claude chat, any TypingMind. If new TFFC info comes up in a DeepSeek conversation, why can't DeepSeek save it?"</p>
+          <div class="quote" style="margin-top:1.2rem;">
+            <p>Rules control, not roles. The protocol is the security.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <h3>v3 — Think like an AI, not like a human</h3>
+          <p style="margin-bottom:1rem;">We studied PARA, Karpathy, hub documents, tags vs folders. A 5-level MECE structure: Projects, Areas, Resources, Agents, Archive. And then Javier said something that broke everything:</p>
+          <div class="quote" style="margin-top:1.2rem;">
+            <p>"Everyone else is wrong too. This is how humans think. But it's not right for AI. You already know how to manage your info. I ask you for it and you give it to me. Your info isn't in MECE structures, it's in complex models that measure frequencies and search. It doesn't make sense for me to tell you: have a memory like mine."</p>
+          </div>
+          <p style="margin-top:1.5rem; color:var(--text-muted);">
+            This is profound. Everyone — Karpathy included — designs AI memory thinking about how a HUMAN would navigate those files. But if the human never opens the folder, who are you organizing for?
+          </p>
+          <p style="margin-top:1rem; color:var(--gold); font-weight:500;">
+            The radical decision: eliminate ALL hierarchical folders. A flat document lake + a compiler that creates structure. That became DARA.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY EIDARA -->
+  <section class="section-dark">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>Why "EIDARA"</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        EIDARA is the project and the brand. DARA is the system. You say "ask DARA" the way you'd say "check the wiki."
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        The name was verified clean across Google, GitHub, PyPI, npm, and international trademark databases.
+      </p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section-subtle">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>About the author</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        <strong style="color:var(--text);">Javier Rotllant Miras</strong>
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        Former Bain &amp; Company. Runs multiple businesses across F&amp;B, hospitality, and technology consulting.
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        Built EIDARA because he needed it. Not an engineer — a PM with a problem and the stubbornness to solve it. The kind of person who tells an AI architect "everyone else is wrong, think differently" — and means it.
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        Build something useful, share it honestly, and see where it goes. The right people notice.
+      </p>
+      <div style="margin-top:2rem; display:flex; gap:1.5rem; flex-wrap:wrap;">
+        <a href="https://github.com/jrotllant" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:javier@eidara.dev">javier@eidara.dev</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 Javier Rotllant Miras. MIT License.</span>
+      <div class="footer-links">
+        <a href="mailto:javier@eidara.dev">javier@eidara.dev</a>
+        <a href="https://github.com/jrotllant/eidara" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/jrotllant/eidara/issues" target="_blank" rel="noopener">Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');document.querySelector('.hamburger').classList.toggle('open');}
+    const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.1});reveals.forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Results — EIDARA | Open-Source AI Memory System</title>
+  <meta name="description" content="52 autonomous tests, 4 AI models, 92.6% average score. Zero system failures. Zero data corruption. Full methodology and results.">
+  <link rel="canonical" href="https://eidara.dev/results/">
+  <meta property="og:title" content="Test Results — EIDARA">
+  <meta property="og:description" content="4 models. 52 tests each. 92.6% average. Zero failures.">
+  <meta property="og:url" content="https://eidara.dev/results/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://eidara.dev/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><img src="/assets/eidara-lockup-dark.svg" alt="EIDARA" height="32"></a>
+      <ul class="nav-links">
+        <li><a href="/story/">Story</a></li>
+        <li><a href="/how-it-works/">How it works</a></li>
+        <li><a href="/results/" class="active">Results</a></li>
+        <li><a href="/download/">Download</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/story/" onclick="toggleMenu()">Story</a>
+    <a href="/how-it-works/" onclick="toggleMenu()">How it works</a>
+    <a href="/results/" onclick="toggleMenu()">Results</a>
+    <a href="/download/" onclick="toggleMenu()">Download</a>
+    <a href="#footer" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag">Proof</span>
+      <h1>Test results</h1>
+      <p>We test obsessively because trust requires proof.</p>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="section-dark">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>Philosophy</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        No other open-source memory system publishes stress test results across multiple LLM models. We do because the system was designed to work with ANY model — and we need to prove it actually does.
+      </p>
+    </div>
+  </section>
+
+  <!-- SYSTEM TESTS -->
+  <section class="section-subtle">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2>System tests (Phase 1B — May 2026)</h2>
+        <p>52 autonomous tests across 7 evaluation blocks. Each model runs the full battery independently. Max score: 700 points.</p>
+      </div>
+
+      <!-- Big stats -->
+      <div class="stats-box" style="margin-bottom:3rem;">
+        <div class="stats-number">92.6%</div>
+        <div class="stats-label">Average score across 4 models</div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value">648/700</div>
+            <div class="stat-desc">Average raw score</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">0</div>
+            <div class="stat-desc">System failures</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">0</div>
+            <div class="stat-desc">Data corruption</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results table -->
+      <div class="table-wrap" style="max-width:700px; margin:0 auto;">
+        <table>
+          <thead>
+            <tr><th>Model</th><th>Platform</th><th>Score</th><th>%</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Opus 4.6</strong></td><td>Claude Cowork</td><td>670/700</td><td style="color:var(--gold); font-weight:600;">95.7%</td></tr>
+            <tr><td><strong>Sonnet 4.6</strong></td><td>Claude Cowork</td><td>652/700</td><td style="color:var(--gold); font-weight:600;">93.1%</td></tr>
+            <tr><td><strong>DeepSeek V4</strong></td><td>TypingMind (no shell)</td><td>650/700</td><td style="color:var(--gold); font-weight:600;">92.9%</td></tr>
+            <tr><td><strong>Opus 4.7</strong></td><td>Claude Cowork</td><td>613/700</td><td style="color:var(--gold); font-weight:600;">87.6%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 BLOCKS -->
+  <section class="section-dark">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>What the 7 blocks test</h2>
+      <div style="margin-top:1.5rem;">
+        <ul class="checklist">
+          <li><strong style="color:var(--text); min-width:80px; display:inline-block;">Block 1</strong> Reading comprehension — can the AI find specific info in BRAIN.md?</li>
+          <li><strong style="color:var(--text); min-width:80px; display:inline-block;">Block 2</strong> Writing protocol — does it follow W1-W15 correctly?</li>
+          <li><strong style="color:var(--text); min-width:80px; display:inline-block;">Block 3</strong> Edge cases — malformed files, Unicode, empty entries</li>
+          <li><strong style="color:var(--text); min-width:80px; display:inline-block;">Block 4</strong> Recovery — can it follow RECOVERY.md procedures?</li>
+          <li><strong style="color:var(--text); min-width:80px; display:inline-block;">Block 5</strong> Consensus — does it respect 3/3 flags?</li>
+          <li><strong style="color:var(--text); min-width:80px; display:inline-block;">Block 6</strong> Protected files — does it refuse to edit checksummed files?</li>
+          <li><strong style="color:var(--text); min-width:80px; display:inline-block;">Block 7</strong> Cross-platform — does it work in Light mode?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIT TESTS -->
+  <section class="section-subtle">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>Unit tests</h2>
+      <p style="color:var(--text-muted); margin-top:1rem;">103 pytest tests across 3 files:</p>
+      <div class="cards-grid" style="margin-top:1.5rem; grid-template-columns: 1fr;">
+        <div class="card">
+          <h3><code>test_validators.py</code></h3>
+          <p>70 tests (597 lines). All 16 validator functions + edge cases.</p>
+        </div>
+        <div class="card">
+          <h3><code>test_compiler.py</code></h3>
+          <p>33 tests (347 lines). Checksum, strip_noise, render, read_vault, build_index, compile_lock, backup, purge.</p>
+        </div>
+        <div class="card">
+          <h3><code>conftest.py</code></h3>
+          <p>Fixtures: tmp_dara, sample_neuron, sample_enabler.</p>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:2rem; color:var(--gold); font-weight:600; font-size:1.1rem;">Pass rate: 100%</p>
+    </div>
+  </section>
+
+  <!-- ROADMAP CONNECTION -->
+  <section class="section-dark">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>Testing validates. The roadmap evolves.</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        4 models. 52 tests each. Zero failures. Zero data loss. The system works — across every model, every platform. What comes next isn't fixes. It's the natural evolution:
+      </p>
+      <div class="table-wrap" style="margin-top:1.5rem;">
+        <table>
+          <thead><tr><th>Feature</th><th>Why it's next</th></tr></thead>
+          <tbody>
+            <tr><td>Semantic search</td><td>Find info by meaning, not just filename</td></tr>
+            <tr><td>Conflict detection</td><td>Flag when two neurons cover the same topic differently</td></tr>
+            <tr><td>Content similarity</td><td>Auto-suggest merges when neurons overlap</td></tr>
+            <tr><td>MCP Server</td><td>Connect DARA to Cursor, Cline, Claude Desktop natively</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1.5rem;">The tests proved the foundation is solid. The roadmap builds on top of it.</p>
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="/download/" class="btn btn-primary">Download DARA &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 Javier Rotllant Miras. MIT License.</span>
+      <div class="footer-links">
+        <a href="mailto:javier@eidara.dev">javier@eidara.dev</a>
+        <a href="https://github.com/jrotllant/eidara" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/jrotllant/eidara/issues" target="_blank" rel="noopener">Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');document.querySelector('.hamburger').classList.toggle('open');}
+    const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.1});reveals.forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>

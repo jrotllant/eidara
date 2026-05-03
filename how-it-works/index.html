@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works — EIDARA | Open-Source AI Memory System</title>
+  <meta name="description" content="DARA architecture: two-gate system, 10-step compiler, 15 writing rules, self-healing protocol. No database, no Docker, no API.">
+  <link rel="canonical" href="https://eidara.dev/how-it-works/">
+  <meta property="og:title" content="How It Works — EIDARA">
+  <meta property="og:description" content="Two-gate architecture, 10-step compiler, 15 writing rules. Zero infrastructure.">
+  <meta property="og:url" content="https://eidara.dev/how-it-works/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://eidara.dev/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><img src="/assets/eidara-lockup-dark.svg" alt="EIDARA" height="32"></a>
+      <ul class="nav-links">
+        <li><a href="/story/">Story</a></li>
+        <li><a href="/how-it-works/" class="active">How it works</a></li>
+        <li><a href="/results/">Results</a></li>
+        <li><a href="/download/">Download</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/story/" onclick="toggleMenu()">Story</a>
+    <a href="/how-it-works/" onclick="toggleMenu()">How it works</a>
+    <a href="/results/" onclick="toggleMenu()">Results</a>
+    <a href="/download/" onclick="toggleMenu()">Download</a>
+    <a href="#footer" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag">Architecture</span>
+      <h1>How it works</h1>
+      <p>A two-gate system: write structured files, compile them into one, read anywhere.</p>
+    </div>
+  </section>
+
+  <!-- TWO-GATE ARCHITECTURE -->
+  <section class="section-dark">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2>Two-gate architecture</h2>
+      </div>
+      <!-- Architecture SVG diagram -->
+      <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="max-width:700px; margin:0 auto; display:block;" fill="none">
+        <!-- DARA.md Constitution box -->
+        <rect x="180" y="10" width="340" height="60" rx="8" stroke="#A78BFA" stroke-width="1.5" fill="rgba(91,74,138,0.1)"/>
+        <text x="350" y="35" text-anchor="middle" fill="#A78BFA" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600">DARA.md (Constitution)</text>
+        <text x="350" y="55" text-anchor="middle" fill="rgba(240,237,245,0.6)" font-family="Inter, sans-serif" font-size="11">15 rules &middot; Entry point for all AIs</text>
+        <!-- Arrow down -->
+        <line x1="350" y1="70" x2="350" y2="100" stroke="#A78BFA" stroke-width="1.5" stroke-dasharray="4"/>
+        <!-- VAULT box -->
+        <rect x="100" y="110" width="200" height="130" rx="10" stroke="#A78BFA" stroke-width="1.5" fill="rgba(91,74,138,0.08)"/>
+        <text x="200" y="138" text-anchor="middle" fill="#A78BFA" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600">VAULT/ (Gate 1: WRITE)</text>
+        <text x="200" y="165" text-anchor="middle" fill="rgba(240,237,245,0.6)" font-family="JetBrains Mono, monospace" font-size="11">NEURONS/ (projects)</text>
+        <text x="200" y="185" text-anchor="middle" fill="rgba(240,237,245,0.6)" font-family="JetBrains Mono, monospace" font-size="11">ENABLERS/ (tools)</text>
+        <text x="200" y="205" text-anchor="middle" fill="rgba(240,237,245,0.6)" font-family="JetBrains Mono, monospace" font-size="11">INBOX/ (feedback)</text>
+        <text x="200" y="230" text-anchor="middle" fill="rgba(240,237,245,0.4)" font-family="Inter, sans-serif" font-size="10">Any AI writes here</text>
+        <!-- Arrow from VAULT to LIBRARY -->
+        <line x1="300" y1="175" x2="395" y2="175" stroke="#D4A855" stroke-width="2"/>
+        <polygon points="395,170 405,175 395,180" fill="#D4A855"/>
+        <text x="350" y="165" text-anchor="middle" fill="#D4A855" font-family="JetBrains Mono, monospace" font-size="10">compile.py</text>
+        <!-- LIBRARY box -->
+        <rect x="410" y="130" width="200" height="90" rx="10" stroke="#D4A855" stroke-width="1.5" fill="rgba(212,168,85,0.06)"/>
+        <text x="510" y="158" text-anchor="middle" fill="#D4A855" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600">LIBRARY/ (Gate 2: READ)</text>
+        <text x="510" y="183" text-anchor="middle" fill="rgba(240,237,245,0.6)" font-family="JetBrains Mono, monospace" font-size="12">BRAIN.md</text>
+        <text x="510" y="205" text-anchor="middle" fill="rgba(240,237,245,0.4)" font-family="Inter, sans-serif" font-size="10">Single compiled file</text>
+        <!-- Why two gates -->
+        <text x="350" y="285" text-anchor="middle" fill="rgba(240,237,245,0.6)" font-family="Inter, sans-serif" font-size="12">Writers deal with individual, well-structured source files.</text>
+        <text x="350" y="305" text-anchor="middle" fill="rgba(240,237,245,0.6)" font-family="Inter, sans-serif" font-size="12">Readers get a single file that fits in a context window.</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- NEURON -->
+  <section class="section-subtle">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>What's a Neuron?</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        A Neuron is one topic. One file. One concern.
+      </p>
+      <div class="code-block" style="margin-top:1.5rem;">
+        <code><span class="comment"># Examples</span><br><span class="string">hot-website.md</span> — everything about the HOT Frankfurt web project<br><span class="string">dara-system.md</span> — the memory system's own documentation<br><span class="string">profile-claude.md</span> — how Claude should interact with Javier</code>
+      </div>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1.5rem;">
+        Each starts with <code>&rarr;brain:</code> — a compressed summary line that goes directly into BRAIN.md. The rest is detail for when an AI needs depth.
+      </p>
+    </div>
+  </section>
+
+  <!-- ENABLER -->
+  <section class="section-dark">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>What's an Enabler?</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+        An Enabler is a tool, agent, or credential.
+      </p>
+      <div class="code-block" style="margin-top:1.5rem;">
+        <code><span class="string">agent-architect.md</span> — instructions for the system architect role<br><span class="string">cred-cloudflare.md</span> — how to access Cloudflare (no secrets in plaintext)<br><span class="string">tool-typingmind.md</span> — how TypingMind is configured</code>
+      </div>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1.5rem;">
+        Same encoding, same rules. Just a different category.
+      </p>
+    </div>
+  </section>
+
+  <!-- COMPILER -->
+  <section class="section-subtle">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>The compiler (compile.py v3.1)</h2>
+      <p style="color:var(--text-muted); margin-top:1rem;">1,170 lines. Python stdlib only. No dependencies.</p>
+      <div class="code-block" style="margin-top:1.5rem;">
+        <code><span class="keyword">10-step pipeline:</span><br><br><span class="comment"> 1.</span> Backup current BRAIN.md<br><span class="comment"> 2.</span> Prune old backups (max 60, max age 180 days)<br><span class="comment"> 3.</span> Read all VAULT files<br><span class="comment"> 4.</span> Auto-purge archived entries (60-day soft-delete)<br><span class="comment"> 5.</span> Deduplicate (name overlap + Jaccard similarity)<br><span class="comment"> 6.</span> Validate + auto-fix (16 validator functions)<br><span class="comment"> 7.</span> Check INBOX (count pending feedback)<br><span class="comment"> 8.</span> Compile BRAIN.md (summaries + SHA256 checksum)<br><span class="comment"> 9.</span> Delta report (per-entry size comparison)<br><span class="comment">10.</span> Git auto-commit</code>
+      </div>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1.5rem;">
+        Run it manually: <code>python compile.py</code><br>
+        Or let the watcher run it automatically every time a file changes.
+      </p>
+    </div>
+  </section>
+
+  <!-- WRITING PROTOCOL -->
+  <section class="section-dark">
+    <div class="container reveal" style="max-width:800px; margin:0 auto;">
+      <h2>The writing protocol (W1–W15)</h2>
+      <div class="table-wrap" style="margin-top:1.5rem;">
+        <table>
+          <thead><tr><th>Rule</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>W1</strong></td><td>Check first — look up in BRAIN.md INDEX before creating a new neuron</td></tr>
+            <tr><td><strong>W1(b)</strong></td><td>External-session writes — read DARA.md fully before writing from any external context</td></tr>
+            <tr><td><strong>W2</strong></td><td>Fix errors — self-healing. Spot it, fix it, log it.</td></tr>
+            <tr><td><strong>W3(a)</strong></td><td>Never delete files without explicit owner instruction</td></tr>
+            <tr><td><strong>W3(b)</strong></td><td>5 protected files (Architect-only)</td></tr>
+            <tr><td><strong>W3(c)</strong></td><td>Other files: any AI may fix errors; structural changes need permission</td></tr>
+            <tr><td><strong>W4</strong></td><td>Update existing when: new info on same topic, data changed, error detected</td></tr>
+            <tr><td><strong>W5</strong></td><td>Create new ONLY when: topic doesn't fit anywhere existing</td></tr>
+            <tr><td><strong>W6</strong></td><td>After any write: regenerate BRAIN.md (watcher does it in ~8s)</td></tr>
+            <tr><td><strong>W7</strong></td><td>Log everything in changelog.md — append only</td></tr>
+            <tr><td><strong>W8</strong></td><td>File naming: kebab-case, always</td></tr>
+            <tr><td><strong>W9</strong></td><td>Session closing trigger — ask "anything DARA should remember?"</td></tr>
+            <tr><td><strong>W10</strong></td><td>Live memory detection — flag significant info as it arises</td></tr>
+            <tr><td><strong>W11</strong></td><td>Write lean, review everything — consensus flags for ambiguous removals</td></tr>
+            <tr><td><strong>W12</strong></td><td>Verify writes via shell after edits</td></tr>
+            <tr><td><strong>W13</strong></td><td>Structure for BRAIN efficiency — large neurons start with summary</td></tr>
+            <tr><td><strong>W14</strong></td><td>Enabler summaries — every agent file starts with <code>summary:</code></td></tr>
+            <tr><td><strong>W15</strong></td><td>Platform-aware reading — Standard vs Light mode</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIX OR FLAG -->
+  <section class="section-subtle">
+    <div class="container reveal" style="max-width:720px; margin:0 auto; text-align:center;">
+      <h2>Fix or flag, never ask</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-top:1.5rem; font-size:1.1rem;">The cardinal rule for AI behavior inside DARA:</p>
+      <div style="margin:2rem auto; max-width:400px;">
+        <p style="color:var(--gold); font-size:1.1rem; font-weight:500; margin-bottom:0.5rem;">If certain &rarr; fix it.</p>
+        <p style="color:var(--lilac); font-size:1.1rem; font-weight:500; margin-bottom:0.5rem;">If uncertain &rarr; flag it (INBOX).</p>
+        <p style="color:var(--text-muted); font-size:1.1rem; margin-top:1rem;">Never ask the human "should I update this?"</p>
+      </div>
+      <p style="color:var(--text-muted); line-height:1.8;">This is what makes it self-maintaining. Every AI leaves the system slightly better than it found it.</p>
+    </div>
+  </section>
+
+  <!-- PROTECTION -->
+  <section class="section-dark">
+    <div class="container reveal" style="max-width:720px; margin:0 auto;">
+      <h2>Protection mechanisms</h2>
+      <ul class="checklist" style="margin-top:1.5rem;">
+        <li>SHA256 checksums on 5 critical files</li>
+        <li>BRAIN.md has a warning header (don't edit directly)</li>
+        <li>Consensus: 3/3 confirmations for content deletion</li>
+        <li>Git: every compile = automatic commit (full history)</li>
+        <li>Backups: timestamped snapshots, auto-rotated</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- READING MODES -->
+  <section class="section-subtle">
+    <div class="container reveal" style="max-width:800px; margin:0 auto;">
+      <h2>Works with every AI, even without tool calls</h2>
+      <div class="two-col" style="margin-top:2rem;">
+        <div class="card">
+          <h3 style="color:var(--lilac);">Standard Mode</h3>
+          <p>AI reads full BRAIN.md, opens VAULT files as needed. For Claude, GPT with plugins, and models with reliable tool access.</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--gold);">Light Mode</h3>
+          <p>AI reads only BRAIN.md (INDEX + summaries). For DeepSeek, ChatGPT web, and models without filesystem access. Same data, smaller context.</p>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:2rem; color:var(--text-muted);">The protocol adapts to the model's capabilities — not the other way around.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 Javier Rotllant Miras. MIT License.</span>
+      <div class="footer-links">
+        <a href="mailto:javier@eidara.dev">javier@eidara.dev</a>
+        <a href="https://github.com/jrotllant/eidara" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/jrotllant/eidara/issues" target="_blank" rel="noopener">Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');document.querySelector('.hamburger').classList.toggle('open');}
+    const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.1});reveals.forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
