@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="assets/eidara-mark.svg" width="64" height="64" alt="EIDARA logo">
-<br>
-<h1>EIDARA</h1>
+<img src="assets/eidara-lockup-light.svg" width="202" height="72" alt="EIDARA">
 
 **Your AI remembers everything between conversations.**
 
