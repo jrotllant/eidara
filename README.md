@@ -29,14 +29,14 @@ DARA is a **compiled persistent memory system for AI**. Any AI writes structured
 ## How it works
 
 ```
-+----------+      +----------+      +----------+
-|  WRITE   |      | COMPILE  |      |   READ   |
-|          |----->|          |----->|          |
-|  VAULT/  |      |compile.py|      | BRAIN.md |
-+----------+      +----------+      +----------+
-Any AI writes.       10-step pipeline.    Any AI reads.
-Any platform.        Validates. Dedupes.  One file. Current.
-                     Auto-fixes. Locks.   SHA256 verified.
++----------+           +----------+           +----------+
+|  WRITE   |           | COMPILE  |           |   READ   |
+|          |---------->|          |---------->|          |
+|  VAULT/  |           |compile.py|           | BRAIN.md |
++----------+           +----------+           +----------+
+Any AI writes.         10-step pipeline.      Any AI reads.
+Any platform.          Validates. Dedupes.    One file. Current.
+                       Auto-fixes. Locks.     SHA256 verified.
 ```
 
 1. AIs write memories as markdown files in `VAULT/` following 15 rules (the "constitution")
