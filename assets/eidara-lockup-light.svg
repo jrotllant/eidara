@@ -1,0 +1,37 @@
+<svg width="202" height="72" viewBox="0 0 202 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="halo-lk" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#D4A855" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#D4A855" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Brain Glyph mark at 72px (64 viewBox x 1.125 scale) -->
+  <g transform="translate(0,0) scale(1.125)">
+    <path d="M 32 8 C 22 8, 14 13, 12 22 C 9 22, 6 25, 6 30 C 6 35, 9 38, 12 38 C 12 44, 16 49, 22 51 L 22 56 L 28 56 L 28 51 C 30 51, 32 50, 32 50 C 32 50, 34 51, 36 51 L 36 56 L 42 56 L 42 51 C 48 49, 52 44, 52 38 C 55 38, 58 35, 58 30 C 58 25, 55 22, 52 22 C 50 13, 42 8, 32 8 Z" fill="#5B4A8A"/>
+    <path d="M 32 12 L 32 50" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M 14 24 Q 20 22, 26 26" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+    <path d="M 14 32 Q 20 30, 26 34" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+    <path d="M 14 40 Q 20 38, 24 42" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+    <path d="M 38 26 Q 44 22, 50 24" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+    <path d="M 38 34 Q 44 30, 50 32" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+    <path d="M 40 42 Q 44 38, 50 40" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+    <circle cx="18" cy="22" r="6.16" fill="url(#halo-lk)"/>
+    <circle cx="18" cy="22" r="2.2" fill="#D4A855"/>
+    <circle cx="26" cy="28" r="1.4" fill="rgba(255,255,255,0.85)"/>
+    <circle cx="22" cy="38" r="1.6" fill="rgba(255,255,255,0.85)"/>
+    <circle cx="38" cy="18" r="1.4" fill="rgba(255,255,255,0.85)"/>
+    <circle cx="46" cy="26" r="6.16" fill="url(#halo-lk)"/>
+    <circle cx="46" cy="26" r="2.2" fill="#D4A855"/>
+    <circle cx="42" cy="38" r="1.6" fill="rgba(255,255,255,0.85)"/>
+    <circle cx="32" cy="44" r="1.6" fill="rgba(255,255,255,0.85)"/>
+  </g>
+  <!-- Wordmark: Space Grotesk SemiBold 600, outlined paths -->
+  <g fill="#1A1525">
+    <path d="M92.07 46.5V25.5H105.45V28.77H95.7V34.29H104.61V37.56H95.7V43.23H105.6V46.5Z"/>
+    <path d="M109.95 46.5V25.5H113.58V46.5Z"/>
+    <path d="M118.23 46.5V43.32H121.05V28.68H118.23V25.5H126.78Q130.98 25.5 133.2 27.63Q135.42 29.76 135.42 34.02V37.98Q135.42 42.24 133.2 44.37Q130.98 46.5 126.78 46.5ZM124.65 43.23H126.81Q129.36 43.23 130.59 41.91Q131.82 40.59 131.82 38.1V33.93Q131.82 31.38 130.59 30.075Q129.36 28.77 126.81 28.77H124.65Z"/>
+    <path d="M138.6 46.5 144.36 25.5H150.63L156.39 46.5H152.67L151.41 41.7H143.58L142.32 46.5ZM144.42 38.4H150.57L147.75 27.75H147.24Z"/>
+    <path d="M160.26 46.5V25.5H169.23Q171.21 25.5 172.68 26.19Q174.15 26.88 174.975 28.125Q175.8 29.37 175.8 31.11V31.44Q175.8 33.39 174.87 34.56Q173.94 35.73 172.62 36.27V36.75Q173.79 36.81 174.465 37.56Q175.14 38.31 175.14 39.57V46.5H171.54V40.08Q171.54 39.33 171.135 38.865Q170.73 38.4 169.83 38.4H163.89V46.5ZM163.89 35.13H168.87Q170.43 35.13 171.315 34.305Q172.2 33.48 172.2 32.1V31.83Q172.2 30.42 171.33 29.595Q170.46 28.77 168.87 28.77H163.89Z"/>
+    <path d="M178.95 46.5 184.71 25.5H190.98L196.74 46.5H193.02L191.76 41.7H183.93L182.67 46.5ZM184.77 38.4H190.92L188.1 27.75H187.59Z"/>
+  </g>
+</svg>
