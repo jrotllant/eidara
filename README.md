@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="assets/eidara-lockup-light.svg" width="202" height="72" alt="EIDARA">
+<img src="assets/eidara-mark.svg" width="64" height="64" alt="EIDARA logo">
+<br>
+<h1>EIDARA</h1>
 
 **Your AI remembers everything between conversations.**
 
@@ -29,14 +31,14 @@ DARA is a **compiled persistent memory system for AI**. Any AI writes structured
 ## How it works
 
 ```
-+----------+           +----------+           +----------+
-|  WRITE   |           | COMPILE  |           |   READ   |
-|          |---------->|          |---------->|          |
-|  VAULT/  |           |compile.py|           | BRAIN.md |
-+----------+           +----------+           +----------+
-Any AI writes.         10-step pipeline.      Any AI reads.
-Any platform.          Validates. Dedupes.    One file. Current.
-                       Auto-fixes. Locks.     SHA256 verified.
+┌──────────┐         ┌──────────┐         ┌──────────┐
+│  WRITE   │         │ COMPILE  │         │   READ   │
+│          │────────▶│          │────────▶│          │
+│  VAULT/  │         │compile.py│         │ BRAIN.md │
+└──────────┘         └──────────┘         └──────────┘
+Any AI writes.       10-step pipeline.    Any AI reads.
+Any platform.        Validates. Dedupes.  One file. Current.
+                     Auto-fixes. Locks.   SHA256 verified.
 ```
 
 1. AIs write memories as markdown files in `VAULT/` following 15 rules (the "constitution")
@@ -61,14 +63,16 @@ Any platform.          Validates. Dedupes.    One file. Current.
 
 ```bash
 git clone https://github.com/jrotllant/eidara.git
+cd eidara
+# Give "INSTALL - Give this file to Claude or any AI.md" to any AI
+# Or manually: personalize DARA.md, then run:
+python compile.py
 ```
 
-Give the `INSTALL - Give this file to Claude or any AI.md` file to any AI (Claude, TypingMind, or any LLM with filesystem access). It handles everything: prerequisites, personalization, first compile, auto-watcher.
-
-**That's it.** Your AI does the setup.
+Then give the `INSTALL` file to any AI (Claude, TypingMind, or any LLM with filesystem access). It handles everything: prerequisites, personalization, first compile, auto-watcher. **Your AI does the setup.**
 
 **Want to see DARA fully populated before personalizing?**
-Download the **Sample Vault** from [Releases](https://github.com/jrotllant/eidara/releases) (`eidara-sample-vault-v1.0.zip`). It contains a fictional indie maker's full DARA (17 neurons, 6 enablers, populated changelog, INBOX feedback) — drop it on your Desktop, run `python compile.py`, and explore the system in action in 2 minutes. Wipe it when you're ready to start your own.
+Download the [Sample Vault](https://github.com/jrotllant/eidara/releases/download/v1.0/eidara-sample-vault-v1.0.zip) — a fictional indie maker's full DARA (17 neurons, 6 enablers, populated changelog, INBOX feedback). Drop it on your Desktop, run `python compile.py`, and explore the system in 2 minutes.
 
 ## Why DARA?
 
@@ -81,8 +85,14 @@ A 10-step pipeline: validates, deduplicates, auto-fixes, compresses, checksums, 
 ### Model-agnostic by design
 Claude, DeepSeek, or any LLM with filesystem access — anyone writes if they follow the protocol. **Tested across 4 models with 52 autonomous tests. Average score: 92.6%.**
 
-### Self-healing
-If certain → fix it. If uncertain → flag it. Every AI leaves the system slightly better than it found it. Consensus flags (3/3 vote) protect against unilateral content changes.
+### Self-healing in three layers
+**Layer 1:** Any AI spots an error and fixes it immediately (W2). **Layer 2:** The compiler auto-fixes broken refs, headers, encoding issues. **Layer 3:** Ambiguous content is flagged, voted on across sessions (3/3 consensus), and only removed when three AIs agree.
+
+### Governance by consensus
+Deleting content requires 3 independent AI votes. One AI flags, two others confirm, the content is removed. No unilateral changes. If you disagree with a flag, you reset it. Built-in democracy.
+
+### Agents are documents, not programs
+`agent-librarian.md` contains the full librarian protocol. Any AI that reads it becomes the librarian — Claude, DeepSeek, GPT. To share an agent, share a file. No platform lock-in. Any Writer can become a Librarian; only the owner activates the Architect (via the "Golden Door").
 
 ### Zero infrastructure
 Python 3.10+ and Git. That's it. Runs on any machine. Your files never leave your computer. No telemetry, no accounts, no cloud.
@@ -136,19 +146,18 @@ eidara/
 - You're tired of pasting context manually every session
 - You manage multiple projects and your AIs should know them all
 - You care about privacy (no cloud, no telemetry)
-- You can run a Python script (or know someone who can)
+- You can install software (the AI handles the rest)
 
 **If 2 or more describe you, EIDARA will save you time starting today.**
 
-## Roadmap
+## What we're exploring
 
-| When | What | Why it matters |
-|------|------|----------------|
-| **v1.0** | GitHub release + eidara.dev | The launch |
-| **Jul 2026** | Semantic search (`--with-index`, SQLite) | Find info without remembering exact words |
-| **Sep 2026** | MCP Server | Connect DARA to Cursor, Cline, Claude Desktop |
-| **Q4 2026** | Web dashboard + consensus audit trail | Who wrote what, when. Full traceability. |
-| **2027** | Agent marketplace + optional cloud sync | Community agents. Cloud never required. |
+- **Semantic search** — find info by meaning, not just filename
+- **MCP Server** — connect DARA to Cursor, Cline, Claude Desktop
+- **Conflict detection** — flag when two neurons overlap
+- **Web dashboard** — visualize your memory, audit who wrote what
+- **Agent marketplace** — share and discover ENABLERS
+- **Optional cloud sync** — team collaboration, local-first always
 
 Stay updated at [eidara.dev](https://eidara.dev) — each release ships as an `UPDATE.md` file. Give it to your AI, it applies the changes automatically.
 
