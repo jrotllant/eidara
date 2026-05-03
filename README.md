@@ -31,11 +31,11 @@ DARA is a **compiled persistent memory system for AI**. Any AI writes structured
 ## How it works
 
 ```
-┌──────────┐         ┌──────────┐         ┌──────────┐
-│  WRITE   │         │ COMPILE  │         │   READ   │
-│          │────────▶│          │────────▶│          │
-│  VAULT/  │         │compile.py│         │ BRAIN.md │
-└──────────┘         └──────────┘         └──────────┘
++----------+         +----------+         +----------+
+|  WRITE   |         | COMPILE  |         |   READ   |
+|          |-------->|          |-------->|          |
+|  VAULT/  |         |compile.py|         | BRAIN.md |
++----------+         +----------+         +----------+
 Any AI writes.       10-step pipeline.    Any AI reads.
 Any platform.        Validates. Dedupes.  One file. Current.
                      Auto-fixes. Locks.   SHA256 verified.
@@ -72,7 +72,7 @@ python compile.py
 Then give the `INSTALL` file to any AI (Claude, TypingMind, or any LLM with filesystem access). It handles everything: prerequisites, personalization, first compile, auto-watcher. **Your AI does the setup.**
 
 **Want to see DARA fully populated before personalizing?**
-Download the [Sample Vault](https://github.com/jrotllant/eidara/releases/download/v1.0/eidara-sample-vault-v1.0.zip) — a fictional indie maker's full DARA (17 neurons, 6 enablers, populated changelog, INBOX feedback). Drop it on your Desktop, run `python compile.py`, and explore the system in 2 minutes.
+Download the [Sample Vault](https://github.com/jrotllant/eidara/releases/download/v1.0/eidara-sample-vault-v1.0.zip) — a fictional indie maker's full DARA (17 neurons, 6 enablers, populated changelog, INBOX feedback). Drop it on your Desktop, tell your AI it's there, and let it explore the system.
 
 ## Why DARA?
 
@@ -144,6 +144,7 @@ eidara/
 
 - You use more than one AI platform (Claude, DeepSeek, GPT...)
 - You're tired of pasting context manually every session
+- You're tired of wasting tokens on long conversations that repeat what the AI already knew
 - You manage multiple projects and your AIs should know them all
 - You care about privacy (no cloud, no telemetry)
 - You can install software (the AI handles the rest)
