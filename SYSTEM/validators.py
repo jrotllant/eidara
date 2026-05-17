@@ -96,6 +96,12 @@ def fix_ascii_arrows(content, filename, filepath, dry_run=False):
     if "->flag:" in content:
         content = content.replace("->flag:", ARROW + "flag:")
         fixes.append(filename + ": auto-fixed ->flag: to " + ARROW + "flag:")
+    if "->brain:" in content:
+        content = content.replace("->brain:", ARROW + "brain:")
+        fixes.append(filename + ": auto-fixed ->brain: to " + ARROW + "brain:")
+    if "->detail:" in content:
+        content = content.replace("->detail:", ARROW + "detail:")
+        fixes.append(filename + ": auto-fixed ->detail: to " + ARROW + "detail:")
     if fixes and content != original and not dry_run:
         try:
             filepath.write_text(content, encoding="utf-8")

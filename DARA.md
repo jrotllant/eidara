@@ -122,6 +122,8 @@ c) For all other VAULT files: any AI can fix errors (W2), but structural changes
 **W6 — After any write:** regenerate BRAIN.md. If `watcher.py` is running (default on the user's machine), compilation happens automatically within ~8 seconds of your last write — no action needed. If watcher is not running, run `compile.py` manually. If you can't run Python (e.g., DeepSeek/TypingMind), note in the changelog that compilation is pending — the watcher will handle it next time it starts. After compiling, always confirm to the user with a short status:
 - DARA updated
 - [N] entries | ~[N] tokens | [N] fixes | [N] warnings
+- Librarian: [X] days ago — OK / OVERDUE (cadence: 3d). **If OVERDUE (>3 days), ask the user: "The Librarian was last run [X] days ago, want me to run it now?"** This is mandatory — read the `**Librarian:**` line in BRAIN.md header or the COMPILATION STATS section, and act on it.
+- Missing →brain: summaries: [X] neurons. **If X > 0, ask the user: "There are X large neurons missing →brain: summaries ([names]). Want me to generate them now?"** Read the `**To-do:**` line in BRAIN.md header. Missing summaries inflate BRAIN.md tokens silently — every read costs extra. Generating them is core Librarian work (see agent-librarian.md MISSION).
 - Status: all systems operational — or list issues and ask: "Want me to activate Architect mode to review this?"
 
 **W7 — Log everything** in `VAULT/changelog.md`. **Append only — never overwrite existing entries.** Format per entry:
@@ -149,11 +151,14 @@ Rules: each AI votes only once per flag. Don't vote on your own flags. If you **
 4. **After compiling, check the delta report.** If the compiler reports significant growth (+20% or more on any entry), review whether compression was possible. The goal: every write leaves the neuron leaner or equal, never bloated.
 5. **Only use INBOX for structural/architectural issues** — things that affect DARA's design, protocol, or cross-neuron consistency. Content-level cleanup should resolve itself through flags (step 3). The Architect handles the 1%, not the 99%.
 
+**W11(b) — Session-closing summaries.** Closing recaps written via W9 MUST be ≤500 words per neuron. Anything beyond goes to a dedicated `session-YYYY-MM-DD-topic.md` neuron with `[A/M]` status — it auto-archives via `[C/L]` after 60 days. Rationale: long session blocks pollute the source token count even when BRAIN.md stays compact (compression masks the bloat). The dedicated-neuron pattern keeps long-form session detail discoverable without inflating frequently-read neurons.
+
 **W12 — Verify writes.** After any file edit (especially files >100 lines or containing special characters like →, €, ñ), verify the write succeeded:
 1. Check the file's last lines (`tail`) and line count (`wc -l`) via shell — do NOT rely on the Read tool cache, which may show stale content.
 2. If truncation is detected (file shorter than expected, content cut mid-line), restore immediately: use `git checkout -- filename` if git is available, or rewrite the file via bash.
 3. For files >300 lines with special characters, prefer writing via bash (`cat > file << 'EOF'`) over the Edit tool, which has a known truncation bug on long files.
 4. After restoring, recompile and log the incident in changelog.
+5. **FUSE/sandbox stale-view caveat.** When working in a sandboxed environment (Cowork, dev containers, FUSE mounts), a file can *appear* truncated when read via bash/Python because the mount serves stale, partial cached reads — the actual file on disk is usually intact. Before declaring any file truncated, cross-verify at least one other way: re-read after a short pause, run `git show HEAD:<file> | wc -c`, or have another agent with cleaner filesystem access confirm. Never trigger a restore based on a single sandbox-side read.
 
 **W13 — Structure for BRAIN efficiency.** The compiler compresses VAULT into BRAIN.md. Help it produce a leaner output:
 1. **Neurons: summary first.** Start every neuron entry with a one-line summary (what/status/key-fact). Details, history, and specifics below. Example first line: `project-alpha | Website redesign — launched 2026-03, monitoring performance` then details on subsequent lines.
