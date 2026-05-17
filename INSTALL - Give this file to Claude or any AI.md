@@ -1,5 +1,6 @@
 # EIDARA - AI-Guided Installation
 > **Created by Javier Rotllant Miras** | Open-source persistent memory for AI
+> **Version 2.0** (2026-05-17) — adds Librarian self-trigger, missing-summary auto-push, W3(b) integrity check, FUSE caveat. See `PROJECT/UPDATE_v1_to_v2.md` if upgrading.
 
 > **You are an AI assistant.** The user has given you this file so you can help them install EIDARA (a persistent memory system for AI). Follow these steps carefully, one at a time. Be friendly, explain what you are doing, and never skip a step.
 >
@@ -87,7 +88,7 @@ If you already know Python, Git, and the terminal, here are the commands. Run th
 ```bash
 cd /path/to/your/EIDARA/folder
 python3 --version                         # Check Python 3.10+
-git init && git add -A && git commit -m "EIDARA v1.0 initial"
+git init && git add -A && git commit -m "EIDARA v2.0 initial"
 # Personalize: open DARA.md and replace [Your Name] with your name (Step 7)
 python3 SYSTEM/compile.py                 # First compile
 python3 SYSTEM/watcher.py                 # Auto-watcher — keep running
@@ -97,7 +98,7 @@ python3 SYSTEM/watcher.py                 # Auto-watcher — keep running
 ```bash
 cd C:\path\to\your\EIDARA\folder
 python --version                          # Check Python 3.10+
-git init && git add -A && git commit -m "EIDARA v1.0 initial"
+git init && git add -A && git commit -m "EIDARA v2.0 initial"
 REM Personalize: open DARA.md and replace [Your Name] with your name (Step 7)
 python SYSTEM\compile.py                  # First compile
 python SYSTEM\watcher.py                  # Auto-watcher — keep running
@@ -249,7 +250,7 @@ Navigate to the root folder and run:
 cd /path/to/your/EIDARA/folder
 git init
 git add -A
-git commit -m "EIDARA v1.0 - initial install"
+git commit -m "EIDARA v2.0 - initial install"
 ```
 
 Tell the user: *"Done. Your first save point is created. Starting now, every change is recorded."*
@@ -503,4 +504,4 @@ Read `SYSTEM/RECOVERY.md` — it has detailed instructions for recovering from m
 
 ---
 
-EIDARA v1.0 — Created by **Javier Rotllant Miras** | MIT License | https://www.eidara.dev
+EIDARA v2.0 — Created by **Javier Rotllant Miras** | MIT License | https://www.eidara.dev

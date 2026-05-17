@@ -14,6 +14,25 @@ The Architect designs the rules. You enforce quality within those rules.
 
 ---
 
+## MISSION (what counts as a real Librarian pass)
+
+Format checking is **necessary but not sufficient**. A pass that only verifies headers/refs/tags and updates `.librarian-last-run` does NOT qualify as a Librarian run — and the compiler's anti-tampering check will flag it.
+
+Every Librarian pass MUST attempt the following **active** work, not just passive validation:
+
+1. **Optimize neurons and enablers.** Detect bloat (W11/W11(b) compliance), redundant content within a single file, sections that should be promoted/demoted, prose that should become data.
+2. **Remove repetitions across files.** When the same fact (project status, contact email, config value, decision rationale) appears in 2+ neurons, consolidate to one source of truth and replace duplicates with `→refs:` pointers.
+3. **Link and cross-reference.** If neuron A and neuron B share concepts and don't reference each other, add the missing `→refs:`. Look for orphan neurons (no incoming refs from any other file) and connect them where it makes semantic sense.
+4. **Generate missing `→brain:` summaries.** Phase 4 step is MANDATORY for any neuron >1500 chars that lacks one. Do not defer this to "next pass."
+5. **Compress where compression is possible.** Apply W11/W13 standards. Every Librarian touch should leave the affected files leaner or equal — never bloated.
+6. **Propose merges/splits.** When 2 neurons clearly overlap (>50% shared concepts), propose a merge to the user. When 1 neuron grows >5K chars and covers 3+ distinct topics, propose a split.
+
+If a pass produces **zero corrections, zero new refs, zero compressions, and zero proposals**, you have not run the Librarian — you have run a status report. Log this honestly in the changelog: "Librarian pass DEFERRED — no active work performed" rather than claiming completion.
+
+**Anti-tampering note:** the compile.py validator cross-checks `.librarian-last-run` against the changelog. If you update the timestamp without logging at least one `[Librarian]` entry the same day, the next compile will flag the timestamp as SUSPICIOUS.
+
+---
+
 ## EXECUTION PROTOCOL
 
 ### Phase 1 — Orientation (understand current state)
