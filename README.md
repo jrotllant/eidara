@@ -1,3 +1,5 @@
+> **This is the May 2026 version (v2). Current status: [eidara.dev](https://eidara.dev)**
+
 <div align="center">
 
 <img src="assets/eidara-lockup-light.png" width="202" alt="EIDARA">
